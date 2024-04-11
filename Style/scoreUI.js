@@ -56,6 +56,20 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 50,
   },
+  button:{
+     width: 150,
+     height: 50,
+     borderRadius: 10,
+     left: 80,
+     backgroundColor: "#fff",
+     top: -240
+  },
+  buttonText:{
+    fontSize: 20,
+    textAlign: "center",
+    top: 13 ,
+    color: "#000"
+  }
 });
 
 export default styles;

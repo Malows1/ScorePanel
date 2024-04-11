@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, SafeAreaView, Text, Image} from 'react-native';
+import {View, SafeAreaView, Text, Image, TouchableOpacity} from 'react-native';
 import styles from '../Style/scoreUI';
 import playersData from '../computation/datascore'; // Import player data
 import {computeScores} from '../computation/computation'; // Import score computation function
@@ -41,6 +41,9 @@ const Score = () => {
             </View>
           </View>
         )}
+        <TouchableOpacity  style={styles.button}>
+          <Text style={styles.buttonText}>Back</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
