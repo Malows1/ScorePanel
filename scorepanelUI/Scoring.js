@@ -1,8 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { View, SafeAreaView, Text, Image, TouchableOpacity, Modal, Button } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  View,
+  SafeAreaView,
+  Text,
+  Image,
+  TouchableOpacity,
+  Modal,
+} from 'react-native';
 import styles from '../Style/scoreUI';
 import playersData from '../computation/datascore'; // Import player data
-import { computeScores } from '../computation/computation'; // Import score computation function
+import {computeScores} from '../computation/computation'; // Import score computation function
 
 const Score = () => {
   const img = require('../images/spade.png');
@@ -18,7 +25,7 @@ const Score = () => {
     setPlayersWithScores(updatedPlayersData);
   }, []);
 
-  const handleBoxPress = (player) => {
+  const handleBoxPress = player => {
     setSelectedPlayer(player);
     setModalVisible(true);
   };
@@ -35,14 +42,15 @@ const Score = () => {
 
         <View style={styles.boxContainer}>
           {playersWithScores.slice(0, 4).map((player, index) => (
-            <TouchableOpacity key={player.id} onPress={() => handleBoxPress(player)} style={styles.Pcontainer}>
+            <TouchableOpacity
+              key={player.id}
+              onPress={() => handleBoxPress(player)}
+              style={styles.Pcontainer}>
               <View style={styles.box}>
                 <Text style={styles.player}>
                   Player Name: {player.nickname}
                 </Text>
-                <Text style={styles.round}>
-                  Round: {player.roundCount}
-                </Text>
+                <Text style={styles.round}>Round: {player.roundCount}</Text>
                 <View style={styles.scorebox}>
                   <Text style={styles.score}> {player.score}</Text>
                 </View>
@@ -55,30 +63,40 @@ const Score = () => {
           animationType="fade"
           transparent={true}
           visible={modalVisible}
-          onRequestClose={handleCloseModal}
-        >
+          onRequestClose={handleCloseModal}>
           <View style={styles.container}>
-          <Image source={img} style={styles.spade} />
+            <Image source={img} style={styles.spade} />
 
             <View style={styles.modalContent}>
               {selectedPlayer && (
-                <View style = {styles.modalStyles}>           
-                  <Text style={styles.modalScore}>{selectedPlayer.score}</Text>
-                  <Text style = {styles.modalScore}>Score</Text>
-                  <Text style={styles.modalPlayerName}>Player Name: {selectedPlayer.nickname} </Text>
-                  <Text style={styles.modalRound}>Round: {selectedPlayer.roundCount}</Text>
-                  
-                  <Text style={styles.modalTitle}>Scores of Other Players:</Text>
+                <View style={styles.modalStyles}>
+                  <Text style={styles.modalPlayerName}>
+                    Player Name: {selectedPlayer.nickname}
+                  </Text>
+                  <Text style={styles.modalRound}>
+                    Round: {selectedPlayer.roundCount}
+                  </Text>
+                  <Text style={styles.modalScore}>
+                    Score: {selectedPlayer.score}
+                  </Text>
+
+                  <Text style={styles.modalTitle}>
+                    Scores of Other Players:
+                  </Text>
                   {playersWithScores.map((player, index) => (
                     <View key={player.id}>
-                      <Text style = {styles.otherplayer}>{player.nickname}: {player.score}</Text>
+                      <Text style={styles.otherplayer}>
+                        {player.nickname}: {player.score}
+                      </Text>
                     </View>
                   ))}
                 </View>
               )}
-                 <TouchableOpacity onPress={handleCloseModal}  style = {styles.Modalbutton}> 
-                  <Text style={styles.ModalbuttonText}>Close</Text>
-                  </TouchableOpacity>
+              <TouchableOpacity
+                onPress={handleCloseModal}
+                style={styles.Modalbutton}>
+                <Text style={styles.ModalbuttonText}>Close</Text>
+              </TouchableOpacity>
             </View>
           </View>
         </Modal>
