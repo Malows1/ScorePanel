@@ -1,13 +1,6 @@
 // Score.js
 import React from 'react';
-import {
-  View,
-  SafeAreaView,
-  Text,
-  Image,
-  TouchableOpacity,
-  Modal,
-} from 'react-native';
+import { View, SafeAreaView, Text, Image, TouchableOpacity, Modal } from 'react-native';
 import styles from '../Style/scoreUI';
 import useScoreLogic from '../computation/Scorelogic'; // Import logic hook
 
@@ -22,13 +15,19 @@ const Score = () => {
 
   const img = require('../images/spade.png');
 
+  // Sort players based on score in descending order
+  const sortedPlayers = [...playersWithScores].sort((a, b) => b.score - a.score);
+
+  // Filter out the selected player from the list of other players
+  const otherPlayers = sortedPlayers.filter(player => player !== selectedPlayer);
+
   return (
     <SafeAreaView style={styles.BG}>
       <View style={styles.container}>
         <Image source={img} style={styles.spade} />
 
         <View style={styles.boxContainer}>
-          {playersWithScores.slice(0, 4).map((player, index) => (
+          {sortedPlayers.slice(0, 4).map((player, index) => (
             <TouchableOpacity
               key={player.id}
               onPress={() => handleBoxPress(player)}
@@ -63,12 +62,16 @@ const Score = () => {
                   <Text style={styles.modalRound}>
                     Round: {selectedPlayer.roundCount}
                   </Text>
-                  <Text style={styles.modalScore}>{selectedPlayer.score}</Text>
-                  <Text style={styles.modalScore}>Score</Text>
+                  <Text style={styles.modalScore}>
+                    {selectedPlayer.score}
+                  </Text>
+                  <Text style={styles.modalScore}>
+                    Score
+                  </Text>
                   <Text style={styles.modalTitle}>
                     Scores of Other Players:
                   </Text>
-                  {playersWithScores.map((player, index) => (
+                  {otherPlayers.map((player, index) => (
                     <View key={player.id}>
                       <Text style={styles.otherplayer}>
                         {player.nickname}: {player.score}
