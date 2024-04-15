@@ -89,19 +89,19 @@ const styles = StyleSheet.create({
   modalPlayerName: {
     color: '#fff',
     fontSize: 20,
-    top: -105,
+    top: -10,
     left: 10,
   },
   modalRound: {
     color: '#fff',
-    top: -100,
+    top: -5,
     left: 10,
     fontSize: 20,
   },
   modalScore: {
     color: '#fff',
     fontSize: 40,
-    top: -120,
+    top: -170,
     textAlign: 'center',
   },
   modalStyles: {
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textAlign: 'center',
     marginBottom: 10,
-    top: -60,
+    top: -50,
   },
   Modalbutton: {
     width: 150,
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   ModalbuttonText: {
     fontSize: 20,
     textAlign: 'center',
-    top: 13,
+    top: 12,
     color: '#000',
   },
 });

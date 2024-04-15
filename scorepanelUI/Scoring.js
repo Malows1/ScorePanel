@@ -1,39 +1,19 @@
-import React, {useEffect, useState} from 'react';
-import {
-  View,
-  SafeAreaView,
-  Text,
-  Image,
-  TouchableOpacity,
-  Modal,
-} from 'react-native';
+// Score.js
+import React from 'react';
+import { View, SafeAreaView, Text, Image, TouchableOpacity, Modal } from 'react-native';
 import styles from '../Style/scoreUI';
-import playersData from '../computation/datascore'; // Import player data
-import {computeScores} from '../computation/computation'; // Import score computation function
+import useScoreLogic from '../computation/Scorelogic'; // Import logic hook
 
 const Score = () => {
+  const {
+    playersWithScores,
+    selectedPlayer,
+    modalVisible,
+    handleBoxPress,
+    handleCloseModal,
+  } = useScoreLogic();
+
   const img = require('../images/spade.png');
-  const [playersWithScores, setPlayersWithScores] = useState([]);
-  const [selectedPlayer, setSelectedPlayer] = useState(null);
-  const [modalVisible, setModalVisible] = useState(false);
-
-  useEffect(() => {
-    // Calculate scores for players
-    const updatedPlayersData = computeScores(playersData);
-
-    // Set players with scores
-    setPlayersWithScores(updatedPlayersData);
-  }, []);
-
-  const handleBoxPress = player => {
-    setSelectedPlayer(player);
-    setModalVisible(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalVisible(false);
-    setSelectedPlayer(null);
-  };
 
   return (
     <SafeAreaView style={styles.BG}>
@@ -77,9 +57,11 @@ const Score = () => {
                     Round: {selectedPlayer.roundCount}
                   </Text>
                   <Text style={styles.modalScore}>
-                    Score: {selectedPlayer.score}
+                  {selectedPlayer.score}
                   </Text>
-
+                  <Text style={styles.modalScore}>
+                  Score
+                  </Text>
                   <Text style={styles.modalTitle}>
                     Scores of Other Players:
                   </Text>
