@@ -1,6 +1,6 @@
 // scoreLogic.js
-import { useEffect, useState } from 'react';
-import { computeScores } from '../computation/computation';
+import {useEffect, useState} from 'react';
+import {computeScores} from '../computation/computation';
 import playersData from '../computation/datascore';
 
 const useScoreLogic = () => {
@@ -13,7 +13,7 @@ const useScoreLogic = () => {
     setPlayersWithScores(updatedPlayersData);
   }, []);
 
-  const handleBoxPress = (player) => {
+  const handleBoxPress = player => {
     setSelectedPlayer(player);
     setModalVisible(true);
   };

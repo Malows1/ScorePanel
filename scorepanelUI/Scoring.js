@@ -1,6 +1,13 @@
 // Score.js
 import React from 'react';
-import { View, SafeAreaView, Text, Image, TouchableOpacity, Modal } from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  Text,
+  Image,
+  TouchableOpacity,
+  Modal,
+} from 'react-native';
 import styles from '../Style/scoreUI';
 import useScoreLogic from '../computation/Scorelogic'; // Import logic hook
 
@@ -56,12 +63,8 @@ const Score = () => {
                   <Text style={styles.modalRound}>
                     Round: {selectedPlayer.roundCount}
                   </Text>
-                  <Text style={styles.modalScore}>
-                  {selectedPlayer.score}
-                  </Text>
-                  <Text style={styles.modalScore}>
-                  Score
-                  </Text>
+                  <Text style={styles.modalScore}>{selectedPlayer.score}</Text>
+                  <Text style={styles.modalScore}>Score</Text>
                   <Text style={styles.modalTitle}>
                     Scores of Other Players:
                   </Text>
