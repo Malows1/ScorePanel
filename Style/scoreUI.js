@@ -2,16 +2,28 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   title: {
-    color: '#fff',
+    color: '#000',
 
     fontSize: 50,
     fontWeight: 'bold',
     textAlign: 'center',
     top: -310,
   },
-  BG: {
-    backgroundColor: '#f0f0f0',
-    height: '100%',
+  bg: {
+    position: 'absolute', // Added position absolute to position background independently
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    flex: 1,
+    width: '100%',
+    zIndex: 1, // Ensure background is behind other elements
+  },
+  box: {
+    backgroundColor: 'transparent',
+    borderBottomWidth: 1,
+    borderRadius: 10,
+    borderBottomColor: '#BFBEC0',
   },
   spade: {
     width: '100%',
@@ -19,23 +31,24 @@ const styles = StyleSheet.create({
     opacity: 0.1,
   },
 
+  closeButtonText: {
+    color: '#000',
+
+    fontSize: 30,
+    top: -454,
+    left: '90%',
+    fontWeight: 'bold',
+  },
   container: {
     height: 460,
     width: 400,
-    backgroundColor: '#808088',
-    borderRadius: 10,
-    borderWidth: 10,
-    borderColor: '#6e6e6e',
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.8,
-    shadowRadius: 4,
-    elevation: 5,
+    backgroundColor: '#eee8f4',
+    borderRadius: 20,
     left: 14,
     top: 100,
   },
   player: {
-    color: '#fff', // White
+    color: '#000', // White
     fontSize: 18,
     top: 20,
     left: 20,
@@ -43,7 +56,7 @@ const styles = StyleSheet.create({
   },
   round: {
     fontSize: 18,
-    color: '#fff',
+    color: '#000',
     top: 20,
     left: 20,
     fontWeight: 'bold',
@@ -55,7 +68,7 @@ const styles = StyleSheet.create({
   },
   score: {
     textAlign: 'right',
-    color: '#fff',
+    color: '#000',
     fontSize: 30,
   },
   button: {
@@ -63,7 +76,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 10,
     left: 90,
-    backgroundColor: '#fff',
+    backgroundColor: '#000',
     top: -240,
   },
   buttonText: {
@@ -75,31 +88,26 @@ const styles = StyleSheet.create({
   Pcontainer: {
     width: 360,
     height: 90,
-    top: -420,
-    left: 9,
-    marginBottom: 10,
-    borderRadius: 10, // Border radius for rounded corners
-    shadowColor: '#000', // Shadow color
-    shadowOffset: {},
-    shadowOpacity: 0.25, // Opacity of the shadow
-    shadowRadius: 3.84, // Radius of the shadow
-    elevation: 4, // Android only - elevation for shadow effect
+    top: -450,
+    left: 15,
+
+    marginBottom: 5,
   },
   //MOdalUi next page
   modalPlayerName: {
-    color: '#fff',
+    color: '#000',
     fontSize: 20,
     top: -10,
     left: 10,
   },
   modalRound: {
-    color: '#fff',
+    color: '#000',
     top: -5,
     left: 10,
     fontSize: 20,
   },
   modalScore: {
-    color: '#fff',
+    color: '#000',
     fontSize: 40,
     top: -170,
     textAlign: 'center',
@@ -109,13 +117,13 @@ const styles = StyleSheet.create({
     top: -300,
   },
   modalTitle: {
-    color: '#fff',
+    color: '#000',
     textAlign: 'center',
     fontSize: 20,
     top: -70,
   },
   otherplayer: {
-    color: '#fff',
+    color: '#000',
     fontSize: 15,
     textAlign: 'center',
     marginBottom: 10,
@@ -126,14 +134,14 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 10,
     left: 120,
-    backgroundColor: '#fff',
+
     top: -350,
   },
   ModalbuttonText: {
-    fontSize: 20,
+    fontSize: 30,
     textAlign: 'center',
-    top: 12,
-    color: '#000',
+    top: 15,
+    color: '#6750a4',
   },
 });
 

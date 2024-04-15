@@ -1,6 +1,12 @@
-// Score.js
 import React from 'react';
-import { View, SafeAreaView, Text, Image, TouchableOpacity, Modal } from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  Text,
+  Image,
+  TouchableOpacity,
+  Modal,
+} from 'react-native';
 import styles from '../Style/scoreUI';
 import useScoreLogic from '../computation/Scorelogic'; // Import logic hook
 
@@ -14,17 +20,28 @@ const Score = () => {
   } = useScoreLogic();
 
   const img = require('../images/spade.png');
+  const bg = require('../images/bg.png');
 
   // Sort players based on score in descending order
-  const sortedPlayers = [...playersWithScores].sort((a, b) => b.score - a.score);
+  const sortedPlayers = [...playersWithScores].sort(
+    (a, b) => b.score - a.score,
+  );
 
   // Filter out the selected player from the list of other players
-  const otherPlayers = sortedPlayers.filter(player => player !== selectedPlayer);
+  const otherPlayers = sortedPlayers.filter(
+    player => player !== selectedPlayer,
+  );
 
   return (
-    <SafeAreaView style={styles.BG}>
+    <SafeAreaView>
+      <Image source={bg} style={styles.bg} />
       <View style={styles.container}>
         <Image source={img} style={styles.spade} />
+        <TouchableOpacity
+          onPress={() => console.log('Close button pressed')}
+          style={styles.closeButton}>
+          <Text style={styles.closeButtonText}>X</Text>
+        </TouchableOpacity>
 
         <View style={styles.boxContainer}>
           {sortedPlayers.slice(0, 4).map((player, index) => (
@@ -62,12 +79,8 @@ const Score = () => {
                   <Text style={styles.modalRound}>
                     Round: {selectedPlayer.roundCount}
                   </Text>
-                  <Text style={styles.modalScore}>
-                    {selectedPlayer.score}
-                  </Text>
-                  <Text style={styles.modalScore}>
-                    Score
-                  </Text>
+                  <Text style={styles.modalScore}>{selectedPlayer.score}</Text>
+                  <Text style={styles.modalScore}>Score</Text>
                   <Text style={styles.modalTitle}>
                     Scores of Other Players:
                   </Text>

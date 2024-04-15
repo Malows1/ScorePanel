@@ -1,6 +1,6 @@
 // scoreLogic.js
-import { useEffect, useState } from 'react';
-import { computeScores } from '../computation/computation';
+import {useEffect, useState} from 'react';
+import {computeScores} from '../computation/computation';
 import playersData from '../computation/datascore';
 
 const useScoreLogic = () => {
@@ -18,13 +18,16 @@ const useScoreLogic = () => {
     if (playersWithScores.length > 0) {
       const randomIndex = Math.floor(Math.random() * playersWithScores.length);
       const randomPlayer = playersWithScores[randomIndex];
-      const totalScore = playersWithScores.reduce((sum, player) => sum + player.score, 0);
+      const totalScore = playersWithScores.reduce(
+        (sum, player) => sum + player.score,
+        0,
+      );
       randomPlayer.score = totalScore;
       setWinner(randomPlayer);
     }
   }, [playersWithScores]);
 
-  const handleBoxPress = (player) => {
+  const handleBoxPress = player => {
     setSelectedPlayer(player);
     setModalVisible(true);
   };
